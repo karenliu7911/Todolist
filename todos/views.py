@@ -1,13 +1,14 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Todo
+from .forms import TodoForm
 
 # Create your views here.
 
 # CRUD
 
 
-# C:新增
+# R:Read
 def todo_list(request):
     todos = Todo.objects.all()
     print(todos)
@@ -26,3 +27,9 @@ def todo_delete(request, id):
 
     return redirect("todo-list")
     # 此todo-list不是指函式todo_list，是urls.py裡面的todo-list
+
+
+# C:新增
+def todo_create(request):
+
+    return render(request, "todos/create.html", {"form": TodoForm()})
