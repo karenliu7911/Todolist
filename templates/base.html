@@ -6,13 +6,42 @@
     {% block head %}
     <title>Document</title>
     {% endblock %}
+
+    <style>
+        #navbar{
+            background-color:rgb(255, 202, 220);
+            color:bisque;
+            padding: 12px;
+            text-align: center;
+        }
+
+        a{
+            margin-left: 12px;
+            text-decoration: none;
+            width: 100px;
+            display: inline-block;
+            background-color: aquamarine;
+            text-align: center;
+            padding: 6px;
+        }
+
+
+
+    </style>
+
+
 </head>
 <body>
+    <div id="navbar">
+        <a href="{% url 'todo-list' %}">首頁</a>
+        <a href="{% url 'todo-create' %}">新增Todo</a>
+    </div>    
+    <div>
+    {% block content %}   <!--block:固定用法 content可以任意命名-->
 
- {% block content %}   <!--block:固定用法 content可以任意命名-->
 
+    {% endblock %}
+    </div>
 
- {% endblock %}
-    
 </body>
 </html>

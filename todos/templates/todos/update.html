@@ -5,13 +5,13 @@
 <title>更新待辦頁面</title>
 <style>
     body{
-        background-color: aquamarine;
+        background-color: rgb(190, 217, 230);
     }
 </style>
 {% endblock %}
 
 {% block content %}
-<a href="{% url 'todo-list' %}">回首頁</a>
+
 <h1>更新待辦事項</h1>
 <form action="" method="POST">
     {% csrf_token %}
