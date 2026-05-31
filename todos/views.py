@@ -10,7 +10,10 @@ from .forms import TodoForm
 
 # R:Read
 def todo_list(request):
-    todos = Todo.objects.all()
+    todos = Todo.objects.all().order_by(
+        "-created",
+        "-important",
+    )  # order_by 排序，預設升序，加個負號(-)變降序
     print(todos)
 
     return render(request, "todos/list.html", {"todos": todos})
@@ -32,4 +35,15 @@ def todo_delete(request, id):
 # C:新增
 def todo_create(request):
 
+    if request.method == "POST":
+        print(request.POST)
+        form = TodoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            print("新增todo完成")
+            return redirect("todo-list")
+
     return render(request, "todos/create.html", {"form": TodoForm()})
+
+
+#
