@@ -6,6 +6,7 @@
     <title>更新待辦事項</title>
 </head>
 <body>
+    <a href="{% url 'todo-list' %}">回首頁</a>
     <h1>更新待辦事項</h1>
     <form action="" method="POST">
         {% csrf_token %}
@@ -13,6 +14,10 @@
 
         <button type="submit">確認</button>
     </form>
-    <a href="{% url 'todo-list' %}">回首頁</a>
+
+    {% if message %}
+    {{message}}
+    {% endif %}
+
 </body>
 </html>

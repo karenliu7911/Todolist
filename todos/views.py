@@ -46,4 +46,20 @@ def todo_create(request):
     return render(request, "todos/create.html", {"form": TodoForm()})
 
 
-#
+# U:更新
+def todo_update(request, id):
+    todo = Todo.objects.get(id=id)
+    message = None
+
+    if request.method == "GET":
+        form = TodoForm(instance=todo)
+    elif request.method == "POST":
+        form = TodoForm(request.POST, instance=todo)
+        if form.is_valid():
+            form.save()
+            print("更新todo成功!")
+            message = "更新todo成功!"
+
+    return render(
+        request, "todos/update.html", {"form": form, "message": message}
+    )  # form回填form表單，非空表單TodoForm
