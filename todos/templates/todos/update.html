@@ -1,23 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>更新待辦事項</title>
-</head>
-<body>
-    <a href="{% url 'todo-list' %}">回首頁</a>
-    <h1>更新待辦事項</h1>
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
+{% extends 'base.html' %} 
+<!--原本前面語法與base.html重複，故用jinja語法繼承即可-->
 
-        <button type="submit">確認</button>
-    </form>
+{% block head %}
+<title>更新待辦頁面</title>
+<style>
+    body{
+        background-color: aquamarine;
+    }
+</style>
+{% endblock %}
 
-    {% if message %}
-    {{message}}
-    {% endif %}
+{% block content %}
+<a href="{% url 'todo-list' %}">回首頁</a>
+<h1>更新待辦事項</h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
 
-</body>
-</html>
+    <button type="submit">確認</button>
+</form>
+
+{% if message %}
+{{message}}
+{% endif %}
+{% endblock %}
