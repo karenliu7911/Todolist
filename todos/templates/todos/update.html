@@ -1,26 +1,13 @@
-{% extends 'base.html' %} 
-<!--原本前面語法與base.html重複，故用jinja語法繼承即可-->
-
+{% extends 'base.html' %}
 {% block head %}
-<title>更新待辦頁面</title>
-<style>
-    body{
-        background-color: rgb(190, 217, 230);
-    }
-</style>
+<title>更新代辦事項</title>
 {% endblock %}
-
 {% block content %}
-
-<h1>更新待辦事項</h1>
+<h1>更新代辦事項</h1>
 <form action="" method="POST">
     {% csrf_token %}
     {{form.as_p}}
-
-    <button type="submit">確認</button>
+    <button type="submit">確定</button>
 </form>
-
-{% if message %}
-{{message}}
-{% endif %}
+<p>{{message}}</p>
 {% endblock %}
